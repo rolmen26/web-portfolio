@@ -18,7 +18,7 @@ export function ResumeSection({ icon, cvUrl }: ResumeSectionProps) {
     >
       <motion.a
         href={cvUrl}
-        download="CV-Kevin-Munoz.pdf"
+        download="CV-Rommel.pdf"
         whileHover={{ y: -4 }}
         whileTap={{ scale: 0.98 }}
         className="group mx-auto flex max-w-md flex-col items-center justify-center gap-4 rounded-3xl border border-primary/30 bg-gradient-to-br from-primary/15 via-card to-secondary/35 px-8 py-10 text-center shadow-sm transition-all duration-300 hover:shadow-xl"

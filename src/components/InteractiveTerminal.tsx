@@ -36,38 +36,38 @@ const aboutOutput = [
   "║                         ABOUT ME                             ║",
   "╚══════════════════════════════════════════════════════════════╝",
   "",
-  "Kevin Elihan Muñoz Calva",
-  "Co-Technical Lead · Full-Stack Engineer · AI Builder",
+  "Rommel Sebastian Soriano García",
+  "Software Developer · Full-Stack Engineer · AI Builder",
   "",
-  "Nacido en Macará, Loja - Ecuador.",
-  "Graduado de la Universidad Politécnica del Litoral.",
+  "Nacido en Guayaquil, Guayas - Ecuador.",
+  "Graduado de la Universidad Politécnica Salesiana.",
   "",
   "Diseño y construyo productos digitales con enfoque en escalabilidad,",
   "arquitectura clara y resultados medibles. Tengo experiencia liderando",
   "soluciones modernas basadas en microservicios, desarrollo Full-Stack,",
   "arquitecturas orientadas a eventos e integración de IA para producción.",
   "",
-  "Mi stack principal gira alrededor de Laravel, Node.js y ecosistemas web",
+  "Mi stack principal gira alrededor de Laravel, NestJS, y ecosistemas web",
   "modernos, combinando ingeniería de software, infraestructura y visión",
   "de producto para resolver problemas complejos de negocio.",
 ];
 
 const skillsOutput = [
   "┌─ skills ─────────────────────────────────────────────────────┐",
-  "│ Backend        ██████████  Laravel · Node.js · Express       │",
-  "│ Frontend       █████████░  React · Next.js · Vue · Angular   │",
+  "│ Backend        ██████████  Laravel · NestJS · Express        │",
+  "│ Frontend       █████████░  React · Next.js · Vue ·           │",
   "│ Architecture   █████████░  DDD · Microservices · EDA         │",
   "│ AI / Agents    ████████░░  Codex · Claude · Copilot          │",
   "│ Infra          ████████░░  Docker · Kubernetes · Dokploy     │",
-  "│ Cloud          ███████░░░  Google · Oracle · AWS · Azure     │",
+  "│ Cloud          ███████░░░  Google · AWS · Azure              │",
   "└──────────────────────────────────────────────────────────────┘",
 ];
 
 const contactOutput = [
   "┌─ contact ────────────────────────────────────────────────────┐",
-  "│ mail     → 3lihan.m.c@gmail.com                              │",
-  "│ github   → https://github.com/kevelmun                       │",
-  "│ linkedin → https://www.linkedin.com/in/kevelmun              │",
+  "│ mail     → rommelsoriano454@gmail.com                        │",
+  "│ github   → https://github.com/rolmen26                       │",
+  "│ linkedin → https://www.linkedin.com/in/rommel-sorianog       │",
   "└──────────────────────────────────────────────────────────────┘",
 ];
 
@@ -295,7 +295,7 @@ function resolveCommand(command: string, projects: ProjectItem[]): string[] {
   }
 
   if (normalized === "whoami") {
-    return ["kevelmun"];
+    return ["rommelsoriano"];
   }
 
   if (normalized === "date") {
@@ -316,7 +316,7 @@ export function InteractiveTerminal({
   outputClassName,
   inputClassName,
   promptClassName,
-  shellLabel = "kevelmun@portfolio:~",
+  shellLabel = "rommelsoriano@portfolio:~",
   projects = defaultProjects,
   initialLines = [
     "Terminal iniciada.",

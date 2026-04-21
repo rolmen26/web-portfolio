@@ -1054,7 +1054,7 @@ export function IdeWorkspace({
   );
   const terminalInitialLines = React.useMemo(
     () => [
-      "kevelmun@portfolio:~$ npm run dev",
+      "rommelsoriano@portfolio:~$ npm run dev",
       "> portfolio-react@0.0.0 dev",
       "> vite --host 0.0.0.0",
       "Local: http://localhost:5173/",
@@ -1762,7 +1762,7 @@ export function IdeWorkspace({
                         outputClassName="h-44 border-b border-[var(--ide-border)] bg-transparent px-6 py-4 text-[13px]"
                         inputClassName="px-6 py-3"
                         promptClassName="text-[var(--ide-terminal-prompt)]"
-                        shellLabel="kevelmun@portfolio:~"
+                        shellLabel="rommelsoriano@portfolio:~"
                         initialLines={terminalInitialLines}
                         projects={visibleProjects}
                         hideHeader
@@ -1935,7 +1935,7 @@ export function IdeWorkspace({
                   outputClassName="!h-auto min-h-0 flex-1 border-b border-[var(--ide-border)] bg-transparent px-4 py-4 text-[12px]"
                   inputClassName="px-4 py-3 text-[13px]"
                   promptClassName="text-[var(--ide-terminal-prompt)]"
-                  shellLabel="kevelmun@portfolio:~"
+                  shellLabel="rommelsoriano@portfolio:~"
                   initialLines={terminalInitialLines}
                   projects={visibleProjects}
                   hideHeader

@@ -12,7 +12,7 @@ export function PortfolioFooter({ year }: PortfolioFooterProps) {
           <Cpu className="h-4 w-4 text-primary" />
           Diseñado con React, Tailwind y componentes modulares.
         </p>
-        <p>© {year} Kevin Muñoz</p>
+        <p>© {year} Rommel Soriano</p>
       </div>
     </footer>
   );

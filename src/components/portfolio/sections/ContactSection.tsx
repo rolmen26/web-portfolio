@@ -31,8 +31,8 @@ export function ContactSection({
     const email = String(formData.get("email") ?? "").trim();
     const message = String(formData.get("mensaje") ?? "").trim();
 
-    const text = `Hola Kevin, soy ${name}.\nEmail: ${email}\n\nContexto del proyecto:\n${message}`;
-    const whatsappUrl = `https://wa.me/593939133960?text=${encodeURIComponent(text)}`;
+    const text = `Hola Rommel, soy ${name}.\nEmail: ${email}\n\nContexto del proyecto:\n${message}`;
+    const whatsappUrl = `https://wa.me/593983419244?text=${encodeURIComponent(text)}`;
 
     window.open(whatsappUrl, "_blank", "noopener,noreferrer");
   }, []);

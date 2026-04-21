@@ -159,7 +159,7 @@ Path alias:
 Update the following assets and content to personalize:
 
 - Profile photo: `public/images/Me.PNG` (used in `Portfolio.tsx`). Replace with your image or adjust the path in code.
-- CV download: place your file at `public/cv-kevin-munoz.pdf`, or update the link in `Portfolio.tsx` (section “CV”).
+- CV download: place your file at `public/cv-rommel-soriano.pdf`, or update the link in `Portfolio.tsx` (section “CV”).
 - Social links, contact info, projects, and experience: edit values in `src/components/Portfolio.tsx`.
 - Colors and theme: tweak CSS variables in `src/index.css` and Tailwind theme tokens in `tailwind.config.js`.
 
