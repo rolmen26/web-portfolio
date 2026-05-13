@@ -7,7 +7,7 @@ This README covers local development, Docker usage, scripts, customization point
 ## Tech stack
 
 - React 18 + TypeScript 5
-- Vite 4 (dev server and build)
+- Vite 6 (dev server and build)
 - Tailwind CSS 3 (+ tailwindcss-animate)
 - Local UI components inspired by shadcn/ui (in `src/components/ui`)
 - Framer Motion (animations)
@@ -16,8 +16,8 @@ This README covers local development, Docker usage, scripts, customization point
 
 ## Prerequisites
 
-- Node.js 18+ (Dockerfile uses `node:18-alpine`)
-- npm 9+ (comes with Node 18)
+- Node.js 20+ (Dockerfile uses `node:20-alpine`)
+- Corepack enabled, using the pinned `pnpm` version from `package.json`
 
 Optional:
 
@@ -28,13 +28,14 @@ Optional:
 1) Install dependencies
 
 ```bash
-npm install
+corepack enable
+pnpm install
 ```
 
 2) Start the dev server (Vite on port 5173)
 
 ```bash
-npm run dev
+pnpm dev
 ```
 
 3) Open the app
@@ -44,8 +45,8 @@ npm run dev
 Build for production and locally preview the build:
 
 ```bash
-npm run build
-npm run preview
+pnpm build
+pnpm preview
 ```
 
 ## Getting started (Docker)
@@ -65,7 +66,7 @@ Then open http://localhost:5173
 Notes:
 
 - Live reload works thanks to the project folder bind mount (`.:/app`).
-- The container runs `npm run dev -- --host 0.0.0.0` to be reachable from your host.
+- The container runs `pnpm dev -- --host 0.0.0.0` to be reachable from your host.
 
 ### Production (Caddy with automatic HTTPS)
 
@@ -85,7 +86,7 @@ curl -I http://localhost
 
 The production setup:
 
-- Uses Node 20 Alpine to build the app (`npm run build` → `dist/`)
+- Uses Node 20 Alpine to build the app (`pnpm build` → `dist/`)
 - Copies the build output to a Caddy Alpine image
 - Caddy config at `Caddyfile` handles SPA routing (all routes → `index.html`)
 - **Automatic HTTPS**: Caddy obtains and renews Let's Encrypt certificates automatically when you configure your domain
@@ -124,10 +125,10 @@ If you prefer Nginx instead of Caddy, use `Dockerfile.prod` (without auto-HTTPS)
 
 Defined in `package.json`:
 
-- `npm run dev` – Start Vite dev server.
-- `npm run build` – Type-check and build to `dist/`.
-- `npm run preview` – Preview the production build locally.
-- `npm run lint` – Lint with ESLint (requires your ESLint config if you plan to customize rules).
+- `pnpm dev` – Start Vite dev server.
+- `pnpm build` – Type-check and build to `dist/`.
+- `pnpm preview` – Preview the production build locally.
+- `pnpm lint` – Lint with ESLint and `--max-warnings 0`.
 
 ## Project structure
 
@@ -193,7 +194,7 @@ Use in code: `import.meta.env.VITE_API_BASE_URL`.
 
 This is a static site once built (`dist/`). You can deploy to any static host:
 
-- **Vercel / Netlify**: point to `npm run build` and serve `dist/`.
+- **Vercel / Netlify**: point to `pnpm build` and serve `dist/`.
 - **GitHub Pages**: build locally or in CI and publish `dist/`.
 - **Any static server**: copy `dist/` to your server.
 
@@ -239,8 +240,8 @@ docker push your-registry/web-portfolio:latest
 
 ## Troubleshooting
 
-- Port already in use (5173): stop other dev servers or set a different port `npm run dev -- --port 5174`.
-- Node version: use Node 18+ for compatibility with the provided Dockerfile and tooling.
+- Port already in use (5173): stop other dev servers or set a different port `pnpm dev -- --port 5174`.
+- Node version: use Node 20+ for compatibility with the provided Dockerfile and tooling.
 - Styles not applied: ensure Tailwind content globs include your file paths (already configured for `src/**`).
 - Images or CV not found: verify files under `public/` and referenced paths in components.
 
