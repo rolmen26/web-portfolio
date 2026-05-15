@@ -9,6 +9,31 @@ interface RotatingEarthProps {
   className?: string
 }
 
+type GeoPoint = [number, number]
+type PolygonCoordinates = GeoPoint[][]
+type MultiPolygonCoordinates = GeoPoint[][][]
+
+interface LandFeature {
+  type: "Feature"
+  properties?: {
+    featurecla?: string
+  }
+  geometry:
+    | {
+        type: "Polygon"
+        coordinates: PolygonCoordinates
+      }
+    | {
+        type: "MultiPolygon"
+        coordinates: MultiPolygonCoordinates
+      }
+}
+
+interface LandFeatureCollection {
+  type: "FeatureCollection"
+  features: LandFeature[]
+}
+
 export default function RotatingEarth({ width = 800, height = 600, className = "" }: RotatingEarthProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [error, setError] = useState<string | null>(null)
@@ -45,7 +70,7 @@ export default function RotatingEarth({ width = 800, height = 600, className = "
       return value || fallback
     }
 
-    const pointInPolygon = (point: [number, number], polygon: number[][]): boolean => {
+    const pointInPolygon = (point: GeoPoint, polygon: GeoPoint[]): boolean => {
       const [x, y] = point
       let inside = false
 
@@ -61,7 +86,7 @@ export default function RotatingEarth({ width = 800, height = 600, className = "
       return inside
     }
 
-    const pointInFeature = (point: [number, number], feature: any): boolean => {
+    const pointInFeature = (point: GeoPoint, feature: LandFeature): boolean => {
       const geometry = feature.geometry
 
       if (geometry.type === "Polygon") {
@@ -101,9 +126,10 @@ export default function RotatingEarth({ width = 800, height = 600, className = "
       return false
     }
 
-    const generateDotsInPolygon = (feature: any, dotSpacing = 16) => {
-      const dots: [number, number][] = []
-      const bounds = d3.geoBounds(feature)
+    const generateDotsInPolygon = (feature: LandFeature, dotSpacing = 16) => {
+      const dots: GeoPoint[] = []
+      const geoFeature = feature as unknown as d3.GeoPermissibleObjects
+      const bounds = d3.geoBounds(geoFeature)
       const [[minLng, minLat], [maxLng, maxLat]] = bounds
 
       const stepSize = dotSpacing * 0.08
@@ -111,7 +137,7 @@ export default function RotatingEarth({ width = 800, height = 600, className = "
 
       for (let lng = minLng; lng <= maxLng; lng += stepSize) {
         for (let lat = minLat; lat <= maxLat; lat += stepSize) {
-          const point: [number, number] = [lng, lat]
+          const point: GeoPoint = [lng, lat]
           if (pointInFeature(point, feature)) {
             dots.push(point)
             pointsGenerated++
@@ -133,7 +159,7 @@ export default function RotatingEarth({ width = 800, height = 600, className = "
     }
 
     const allDots: DotData[] = []
-    let landFeatures: any
+    let landFeatures: LandFeatureCollection | null = null
 
     const render = () => {
       // Clear canvas
@@ -167,8 +193,8 @@ export default function RotatingEarth({ width = 800, height = 600, className = "
 
         // Draw land outlines
         context.beginPath()
-        landFeatures.features.forEach((feature: any) => {
-          path(feature)
+        landFeatures.features.forEach((feature) => {
+          path(feature as unknown as d3.GeoPermissibleObjects)
         })
         context.strokeStyle = lineColor
         context.lineWidth = 1 * scaleFactor
@@ -200,11 +226,11 @@ export default function RotatingEarth({ width = 800, height = 600, className = "
         )
         if (!response.ok) throw new Error("Failed to load land data")
 
-        landFeatures = await response.json()
+        landFeatures = (await response.json()) as LandFeatureCollection
 
         // Generate dots for all land features
         let totalDots = 0
-        landFeatures.features.forEach((feature: any) => {
+        landFeatures.features.forEach((feature) => {
           const dots = generateDotsInPolygon(feature, 16)
           dots.forEach(([lng, lat]) => {
             allDots.push({ lng, lat, visible: true })

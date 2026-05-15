@@ -4,7 +4,7 @@
 
 Portafolio personal de Kevin Elihan Muñoz Calva. SPA construida con:
 
-- **Vite 4** + **React 18** + **TypeScript** (strict)
+- **Vite 6** + **React 18** + **TypeScript** (strict)
 - **Tailwind CSS** con tokens semánticos via CSS variables
 - **React Router 6** — solo dos rutas reales: `/` y `/workspace`
 - **Framer Motion**, **lucide-react**, **dnd-kit**, **recharts**
@@ -22,7 +22,7 @@ Estructura clave:
 
 ## Environment
 
-- Desarrollo local corre dentro de un contenedor Docker definido en [docker-compose.yml](docker-compose.yml) (servicio `portfolio`, Vite dev server en `5173`).
+- Desarrollo local corre dentro de un contenedor Docker definido en [docker-compose.yml](docker-compose.yml) (servicio `portfolio`, Node 20, pnpm via Corepack, Vite dev server en `5173`).
 - Asegúrate de que comandos, puertos y rutas reflejen el entorno containerizado.
 - Para producción se usa [Dockerfile.dokploy](Dockerfile.dokploy) (multi-stage: build con Node 20, sirve con `nginx:alpine` en puerto 80).
 
@@ -37,8 +37,8 @@ docker exec -it <container-name> <command>
 Reemplaza `<container-name>` por el nombre real (por convención de Docker Compose suele ser `web-portfolio-portfolio-1`). Ejemplos:
 
 ```bash
-docker exec -it web-portfolio-portfolio-1 npm run lint
-docker exec -it web-portfolio-portfolio-1 npm run build
+docker exec -it web-portfolio-portfolio-1 pnpm lint
+docker exec -it web-portfolio-portfolio-1 pnpm build
 ```
 
 ## Routing & 404
@@ -106,10 +106,10 @@ Cargadas en [src/index.css:1](src/index.css#L1) desde Google Fonts:
 ## Build & Lint
 
 ```bash
-npm run dev       # Vite dev server (5173)
-npm run build     # tsc + vite build → dist/
-npm run lint      # eslint con --max-warnings 0
-npm run preview   # servir dist/ localmente
+pnpm dev       # Vite dev server (5173)
+pnpm build     # tsc + vite build → dist/
+pnpm lint      # eslint con --max-warnings 0
+pnpm preview   # servir dist/ localmente
 ```
 
 `tsconfig.json` tiene `strict`, `noUnusedLocals` y `noUnusedParameters` activos. Cualquier import o variable sin uso rompe el build.
