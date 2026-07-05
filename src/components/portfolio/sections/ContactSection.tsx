@@ -82,7 +82,7 @@ export function ContactSection({
                   WhatsApp Directo
                 </Button>
                 <a
-                  href="mailto:3lihan.m.c@gmail.com"
+                  href="mailto:rommelsoriano454@gmail.com"
                   className={cn(buttonVariants({ variant: "outline" }), "rounded-2xl h-14 border-2 border-secondary hover:border-primary hover:bg-secondary/30 font-bold text-lg px-8 flex-1 justify-center transition-all")}
                 >
                   <Send className="mr-2 h-5 w-5" />
