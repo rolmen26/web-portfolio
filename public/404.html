@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 — Página no encontrada | Kevin Elihan Muñoz Calva</title>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="theme-color" content="#181825" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Montserrat:wght@400;500;600&family=Space+Grotesk:wght@500;700;800&display=swap"
+    />
+
+    <script>
+      (function () {
+        var prefersDark = true;
+        try {
+          var stored = globalThis.localStorage.getItem("portfolio:dark-mode");
+          prefersDark =
+            stored === "true" ||
+            (stored === null &&
+              globalThis.matchMedia("(prefers-color-scheme: dark)").matches);
+        } catch (error_) {
+          console.warn("404 page: dark-mode preference unavailable", error_);
+        }
+        if (prefersDark) {
+          document.documentElement.classList.add("dark");
+        }
+      })();
+    </script>
+
+    <style>
+      :root {
+        --background: #eff1f5;
+        --card: #ffffff;
+        --foreground: #4c4f69;
+        --muted-foreground: #6c6f85;
+        --border: #bcc0cc;
+        --primary: #8839ef;
+        --primary-foreground: #ffffff;
+        --accent: #04a5e5;
+        --accent-foreground: #ffffff;
+        --destructive: #d20f39;
+        --secondary: #ccd0da;
+        --font-sans: "Montserrat", "Archivo", sans-serif;
+        --font-display: "Space Grotesk", sans-serif;
+        --font-mono: "Fira Code", ui-monospace, SFMono-Regular, Menlo, monospace;
+      }
+
+      html.dark {
+        --background: #181825;
+        --card: #1e1e2e;
+        --foreground: #cdd6f4;
+        --muted-foreground: #a6adc8;
+        --border: #45475a;
+        --primary: #cba6f7;
+        --primary-foreground: #1e1e2e;
+        --accent: #89dceb;
+        --accent-foreground: #1e1e2e;
+        --destructive: #f38ba8;
+        --secondary: #585b70;
+        color-scheme: dark;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+      }
+
+      body {
+        font-family: var(--font-sans);
+        background: var(--background);
+        color: var(--foreground);
+        min-height: 100%;
+        display: grid;
+        place-items: center;
+        padding: 2rem 1.25rem;
+        overflow-x: hidden;
+        position: relative;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      body::before,
+      body::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        width: 36rem;
+        height: 18rem;
+        transform: translateX(-50%);
+        border-radius: 9999px;
+        filter: blur(80px);
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      body::before {
+        top: -6rem;
+        background: color-mix(in srgb, var(--primary) 22%, transparent);
+      }
+
+      body::after {
+        bottom: -4rem;
+        background: color-mix(in srgb, var(--accent) 18%, transparent);
+      }
+
+      main {
+        position: relative;
+        z-index: 1;
+        max-width: 640px;
+        width: 100%;
+        text-align: center;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.375rem 0.875rem;
+        border-radius: 9999px;
+        background: color-mix(in srgb, var(--accent) 12%, transparent);
+        border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+        color: var(--accent);
+        font-family: var(--font-mono);
+        font-size: 0.8125rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        margin-bottom: 1.75rem;
+      }
+
+      .badge-dot {
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 9999px;
+        background: var(--destructive);
+        animation: pulse 1.6s ease-in-out infinite;
+      }
+
+      h1 {
+        font-family: var(--font-display);
+        font-size: clamp(5rem, 22vw, 10rem);
+        font-weight: 800;
+        line-height: 1;
+        margin: 0 0 0.75rem;
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--accent) 55%,
+          var(--destructive) 100%
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: -0.04em;
+      }
+
+      h2 {
+        font-family: var(--font-display);
+        font-size: clamp(1.25rem, 3.5vw, 1.75rem);
+        font-weight: 600;
+        margin: 0 0 1rem;
+        color: var(--foreground);
+      }
+
+      p {
+        font-size: 1rem;
+        line-height: 1.65;
+        color: var(--muted-foreground);
+        margin: 0 auto 2rem;
+        max-width: 480px;
+      }
+
+      .terminal {
+        margin: 0 auto 2rem;
+        max-width: 520px;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 0.75rem;
+        padding: 1rem 1.25rem;
+        text-align: left;
+        font-family: var(--font-mono);
+        font-size: 0.875rem;
+        color: var(--foreground);
+        box-shadow: 0 20px 60px -20px color-mix(in srgb, var(--foreground) 18%, transparent);
+      }
+
+      .terminal-header {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
+        font-size: 0.75rem;
+        color: var(--muted-foreground);
+      }
+
+      .terminal-header svg {
+        width: 14px;
+        height: 14px;
+      }
+
+      .terminal-line {
+        display: block;
+        white-space: pre-wrap;
+        word-break: break-word;
+        line-height: 1.55;
+      }
+
+      .terminal-host {
+        color: var(--accent);
+      }
+
+      .terminal-path {
+        color: var(--primary);
+      }
+
+      .terminal-muted {
+        color: var(--muted-foreground);
+      }
+
+      .terminal-error {
+        color: var(--destructive);
+      }
+
+      .terminal-cursor {
+        display: inline-block;
+        width: 0.55em;
+        height: 1.1em;
+        background: var(--accent);
+        vertical-align: text-bottom;
+        margin-left: 0.15em;
+        animation: blink 1.05s steps(1) infinite;
+      }
+
+      @keyframes blink {
+        50% {
+          opacity: 0;
+        }
+      }
+
+      @keyframes pulse {
+        0%, 100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.45;
+        }
+      }
+
+      .actions {
+        display: flex;
+        gap: 0.75rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.5rem;
+        border-radius: calc(0.35rem + 2px);
+        font-family: var(--font-sans);
+        font-weight: 600;
+        font-size: 0.9375rem;
+        text-decoration: none;
+        cursor: pointer;
+        border: 1px solid transparent;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease,
+          background 0.2s ease,
+          border-color 0.2s ease,
+          color 0.2s ease;
+      }
+
+      .btn svg {
+        width: 1rem;
+        height: 1rem;
+      }
+
+      .btn-primary {
+        background: var(--primary);
+        color: var(--primary-foreground);
+        box-shadow: 0 10px 30px -12px color-mix(in srgb, var(--primary) 70%, transparent);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 14px 32px -10px color-mix(in srgb, var(--primary) 80%, transparent);
+      }
+
+      .btn-ghost {
+        background: transparent;
+        color: var(--foreground);
+        border-color: var(--border);
+      }
+
+      .btn-ghost:hover {
+        background: color-mix(in srgb, var(--accent) 10%, transparent);
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .terminal-cursor,
+        .badge-dot {
+          animation: none;
+        }
+        .btn {
+          transition: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <span class="badge">
+        <span class="badge-dot" aria-hidden="true"></span>
+        HTTP 404 · NOT_FOUND
+      </span>
+      <h1>404</h1>
+      <h2>Esta ruta no existe</h2>
+      <p>
+        El recurso que buscas se movió, fue renombrado o nunca existió.
+        No te preocupes: aquí siempre hay un camino de vuelta a casa.
+      </p>
+
+      <div class="terminal" role="presentation" aria-hidden="true">
+        <div class="terminal-header">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="4 17 10 11 4 5" />
+            <line x1="12" y1="19" x2="20" y2="19" />
+          </svg>
+          <span>terminal</span>
+        </div>
+        <span class="terminal-line"><span class="terminal-host">kevelmun@portfolio</span><span class="terminal-muted">:</span><span class="terminal-path">~</span><span class="terminal-muted">$ curl -I </span><span id="path-placeholder" class="terminal-muted">/ruta-desconocida</span></span>
+        <span class="terminal-line terminal-error">HTTP/1.1 404 Not Found</span>
+        <span class="terminal-line terminal-muted"># La página solicitada no fue encontrada en el servidor.</span>
+        <span class="terminal-line"><span class="terminal-host">kevelmun@portfolio</span><span class="terminal-muted">:</span><span class="terminal-path">~</span><span class="terminal-muted">$</span><span class="terminal-cursor"></span></span>
+      </div>
+
+      <div class="actions">
+        <a class="btn btn-primary" href="/">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+            <polyline points="9 22 9 12 15 12 15 22" />
+          </svg>
+          Volver al inicio
+        </a>
+        <a class="btn btn-ghost" href="/workspace">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="19" y1="12" x2="5" y2="12" />
+            <polyline points="12 19 5 12 12 5" />
+          </svg>
+          Ir al workspace
+        </a>
+      </div>
+    </main>
+
+    <script>
+      (function () {
+        var placeholder = document.getElementById("path-placeholder");
+        if (placeholder && window.location && window.location.pathname) {
+          var path = window.location.pathname + window.location.search;
+          if (path.length > 60) path = path.slice(0, 57) + "...";
+          placeholder.textContent = path;
+        }
+      })();
+    </script>
+  </body>
+</html>

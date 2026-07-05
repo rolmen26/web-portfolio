@@ -375,7 +375,7 @@ function OutputPanel({
       </div>
 
       <div className="mt-4 flex flex-wrap gap-2">
-        {["npm run dev", "npm run build", "npm run preview"].map((command) => (
+        {["pnpm dev", "pnpm build", "pnpm preview"].map((command) => (
           <span
             key={command}
             className="rounded-full border border-[var(--ide-border)] bg-[var(--ide-tab-active)] px-3 py-1 font-mono text-[11px] text-[var(--ide-text)]"
@@ -1054,7 +1054,7 @@ export function IdeWorkspace({
   );
   const terminalInitialLines = React.useMemo(
     () => [
-      "rommelsoriano@portfolio:~$ npm run dev",
+      "rommelsoriano@portfolio:~$ pnpm run dev",
       "> portfolio-react@0.0.0 dev",
       "> vite --host 0.0.0.0",
       "Local: http://localhost:5173/",
@@ -1245,7 +1245,7 @@ export function IdeWorkspace({
         label: "Preview build",
         host: "0.0.0.0",
         target: "vite preview",
-        note: "Se habilita al ejecutar npm run preview para validar el bundle de produccion localmente.",
+        note: "Se habilita al ejecutar pnpm preview para validar el bundle de produccion localmente.",
       },
       {
         port: 9229,

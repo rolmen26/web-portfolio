@@ -1,7 +1,8 @@
 import * as React from "react";
-import { BrowserRouter, Navigate, Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import MainPortfolio from "@/components/Portfolio";
 import { IdeWorkspace } from "@/components/ide/IdeWorkspace";
+import { NotFound } from "@/components/NotFound";
 import { projects, universityEasterProject } from "@/components/portfolio/data";
 import { useKonamiCode } from "@/components/portfolio/hooks/useKonamiCode";
 import {
@@ -68,10 +69,7 @@ function PortfolioRoutes() {
           />
         }
       />
-      <Route
-        path="*"
-        element={<Navigate to={viewMode === "workspace" ? "/workspace" : "/"} replace />}
-      />
+      <Route path="*" element={<NotFound onReturnToMain={navigateToMainPortfolio} />} />
     </Routes>
   );
 }

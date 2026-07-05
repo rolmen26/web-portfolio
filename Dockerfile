@@ -1,14 +1,17 @@
 # Development Dockerfile for React Portfolio
-FROM node:18-alpine
+FROM node:20-alpine
 
 # Set working directory
 WORKDIR /app
 
 # Copy package files
-COPY package*.json ./
+COPY package.json pnpm-lock.yaml ./
+
+# Enable the package manager pinned in package.json
+RUN corepack enable
 
 # Install dependencies for the image layer; compose startup will sync again if package files change.
-RUN npm ci
+RUN pnpm install --frozen-lockfile
 
 # Copy project files
 COPY . .
@@ -17,4 +20,4 @@ COPY . .
 EXPOSE 5173
 
 # Start development server
-CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
+CMD ["pnpm", "dev", "--", "--host", "0.0.0.0"]
